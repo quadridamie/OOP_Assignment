@@ -16,22 +16,45 @@ function NoteApplication(author){
 			
 		}
 	};
-	this.get = funtion(note_id){
+	this.get = function(note_id){
 		return notes[note_id];
 	}
 	this.search = function(search_text){
 		if(typeof search_text == "string"){
-				document.write("Showing results for search \"" + search_text + "\"<br><br>");
+				console.log("Showing results for search \"" + search_text + "\"<br><br>");
 				//loop through all the notes and check if they contain the search text
 				for(i = 0; i < notes.length; i++){
 					if ( notes[i].search(search_text)){
 						//if the note contains the search text, display the note
-						document.write(notes[i] + "<br>");
+						console.log(notes[i] + "<br>");
 					}
 				}
 			
 			}
 	};
 
+	this.delete = function(note_id){
+
+			//confirm that the argument entered is a number and that it is within range
+			if(typeof note_id == "number" && note_id < notes.length){
+				console.log("Deleting note " + note_id);
+				delete notes[note_id];	
+				console.log("<br>" + note_id + " Deleted");
+			}
+		};
+
+		//the edit method requires two arguments: id and note content.
+		//the id is used to locate the note while the new note content will be used to replace the old one.
+		this.edit = function(note_id, note_content){
+
+			//check that the id is really a number and that it is not out of range
+			//also check that the content is actually a string
+			if(typeof note_id == "number" && typeof note_content == "string" && note_id < notes.length){
+				notes[note_id] = note_content;
+				console.log("<br>Note " + note_id + " updated");
+			}else{
+				console.log("<br>Oops, something went wrong. Make sure you specify a correct note id and input appropriate content");
+			}
+		};
 }
 
