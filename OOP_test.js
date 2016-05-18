@@ -39,7 +39,7 @@ function NoteApplication(author){
 			if(typeof note_id == "number" && note_id < notes.length){
 				console.log("Deleting note " + note_id);
 				delete notes[note_id];	
-				console.log("<br>" + note_id + " Deleted");
+				console.log(note_id + " Deleted");
 			}
 		};
 
@@ -51,9 +51,9 @@ function NoteApplication(author){
 			//also check that the content is actually a string
 			if(typeof note_id == "number" && typeof note_content == "string" && note_id < notes.length){
 				notes[note_id] = note_content;
-				console.log("<br>Note " + note_id + " updated");
+				console.log("Note " + note_id + " updated");
 			}else{
-				console.log("<br>Oops, something went wrong. Make sure you specify a correct note id and input appropriate content");
+				console.log("Failed");
 			}
 		};
 }
