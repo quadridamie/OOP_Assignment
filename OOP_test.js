@@ -1,13 +1,13 @@
-nction NoteApplication(author){
+function NoteApplication(author){
 	this.author = author;
-	this.notes=[];
+	var notes=[];
 	
-	NoteApplication.prototype.create = function(note_content)
+	this.create = function(note_content)
 	{
 		notes.push(note_content);
 		console.log(notes);
 	};
-	NoteApplication.prototype.listNotes = function(){
+	this.listNotes = function(){
 		
 		for(var id = 0; id < notes.lenghth; id++ ){
 			console.log("Note ID: "+ id);
@@ -16,10 +16,22 @@ nction NoteApplication(author){
 			
 		}
 	};
-	NoteApplication.prototype.get = funtion(note_id){
+	this.get = funtion(note_id){
 		return notes[note_id];
 	}
+	this.search = function(search_text){
+		if(typeof search_text == "string"){
+				document.write("Showing results for search \"" + search_text + "\"<br><br>");
+				//loop through all the notes and check if they contain the search text
+				for(i = 0; i < notes.length; i++){
+					if ( notes[i].search(search_text)){
+						//if the note contains the search text, display the note
+						document.write(notes[i] + "<br>");
+					}
+				}
+			
+			}
+	};
+
 }
 
-var test = new NoteApplication('joe');
-test.create('note 1');
