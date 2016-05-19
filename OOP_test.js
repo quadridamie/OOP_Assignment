@@ -4,11 +4,18 @@ function NoteApplication(author){
 	
 	this.create = function(note_content)
 	{
-		notes.push(note_content);
-		console.log(notes);
+		if (typeof note_content ==="string"){
+			notes.push(note_content);
+			console.log(notes);
+			return true;
+		}
+		else{
+			return false;
+		} 
+		
 	};
 	this.listNotes = function(){
-		
+		var note
 		for(var id = 0; id < notes.lenghth; id++ ){
 			console.log("Note ID: "+ id);
 			console.log(notes[id]);
@@ -34,12 +41,13 @@ function NoteApplication(author){
 	};
 
 	this.delete = function(note_id){
-
+			
 			//confirm that the argument entered is a number and that it is within range
 			if(typeof note_id == "number" && note_id < notes.length){
 				console.log("Deleting note " + note_id);
-				delete notes[note_id];	
-				console.log(note_id + " Deleted");
+				//delete notes[note_id];
+				notes.splice(note_id,1)	
+				return note_id + " Deleted";
 			}
 		};
 
