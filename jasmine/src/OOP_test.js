@@ -26,7 +26,7 @@ function NoteApplication(author){
 				for(i = 0; i < notes.length; i++){cd
 					if ( notes[i].search(search_text)){
 						//if the note contains the search text, display the note
-						console.log(notes[i] + "<br>");
+						return notes[i] + "<br>";
 					}
 				}
 			
@@ -40,7 +40,11 @@ function NoteApplication(author){
 				console.log("Deleting note " + note_id);
 				//delete notes[note_id];	
 				notes.splice(note_id, 1);
-				retun note_id + " Deleted";
+				return true;
+			else{
+				return false;
+			} 
+			
 			}
 		};
 

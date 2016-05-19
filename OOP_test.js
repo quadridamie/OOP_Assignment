@@ -33,7 +33,7 @@ function NoteApplication(author){
 				for(i = 0; i < notes.length; i++){
 					if ( notes[i].search(search_text)){
 						//if the note contains the search text, display the note
-						console.log(notes[i] + "<br>");
+						return notes[i];
 					}
 				}
 			
@@ -60,8 +60,9 @@ function NoteApplication(author){
 			if(typeof note_id == "number" && typeof note_content == "string" && note_id < notes.length){
 				notes[note_id] = note_content;
 				console.log("Note " + note_id + " updated");
-			}else{
-				console.log("Failed");
+			}
+			else{
+				return "Failed";
 			}
 		};
 }
